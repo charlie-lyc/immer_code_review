@@ -12,6 +12,7 @@
 // 쉽게 생각해 올림픽 순위 결정 방식을 참고하면 됩니다.
 // 금메달('rock')이 은메달('paper')보다 우선하고, 은메달('paper')이 동메달('scissors')보다 우선합니다.
 
+
 const rockPaperScissors = function () {
   const RPS = ['rock', 'paper', 'scissors'];
   const result = [];
@@ -26,21 +27,21 @@ const rockPaperScissors = function () {
 };
 
 
-// Reference
-const rockPaperScissors = function (rounds=3) {
-  const RPS = ['rock', 'paper', 'scissors'];
-  const result = [];
-
-  const recursionFunc = function(counts, arr) {
-    if (counts === 0) {
-      result.push(arr);
-      return;
-    }
-    for (let element of RPS) {
-      recursionFunc(counts - 1, arr.concat(element));
-    }
-  }
-  recursionFunc(rounds, []);
-
-  return result;
-};
+// 레퍼런스 코드: 리팩토링
+// const rockPaperScissors = function (rounds=3) {
+//   const RPS = ['rock', 'paper', 'scissors'];
+//   const result = [];
+//
+//   const recursionFunc = function(counts, arr) {
+//     if (counts === 0) {
+//       result.push(arr);
+//       return;
+//     }
+//     for (let element of RPS) {
+//       recursionFunc(counts - 1, arr.concat(element));
+//     }
+//   }
+//   recursionFunc(rounds, []);
+//
+//   return result;
+// };

@@ -13,18 +13,18 @@
 // 금메달('rock')이 은메달('paper')보다 우선하고, 은메달('paper')이 동메달('scissors')보다 우선합니다.
 
 /* Bare Minimum Requirements */
-// const rockPaperScissors = function () {
-//   const RPS = ['rock', 'paper', 'scissors'];
-//   const result = [];
-//   for (let element of RPS) {
-//     for (let elem of RPS) {
-//       for (let el of RPS) {
-//         result.push([element, elem, el])
-//       }
-//     }
-//   }
-//   return result;
-// };
+const rockPaperScissors = function () {
+  const RPS = ['rock', 'paper', 'scissors'];
+  const result = [];
+  for (let element of RPS) {
+    for (let elem of RPS) {
+      for (let el of RPS) {
+        result.push([element, elem, el])
+      }
+    }
+  }
+  return result;
+};
 
 /* Advanced */
 // 가위바위보 게임의 수를 나타내는 양의 정수 rounds가 주어질 경우, 해당 rounds 동안 선택할 수 있는 모든 경우의 수를 리턴하도록 함수를 작성해야 합니다.

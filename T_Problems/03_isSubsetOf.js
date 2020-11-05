@@ -7,17 +7,17 @@
 // base, sample 내에 중복되는 요소는 없다고 가정합니다.
 
 /* Bare Minimum Requirements */
-// const isSubsetOf = function (base, sample) {
-//   for (let ele of sample) {
-//     if (base.indexOf(ele) === -1) return false;
-//   }
-//   return true;
-// };
+const isSubsetOf = function (base, sample) {
+  for (let ele of sample) {
+    if (base.indexOf(ele) === -1) return false;
+  }
+  return true;
+};
 
 /* Reference */
-// const isSubsetOf = function (base, sample) {
-//   return sample.every(ele => base.indexOf(ele) !== -1);
-// };
+const isSubsetOf = function (base, sample) {
+  return sample.every(ele => base.indexOf(ele) !== -1);
+};
 
 /* Advanced */
 // base, sample의 길이가 10,000 이상일 경우... 아마도 Time Complexity를 최소화 하는 문제인듯...

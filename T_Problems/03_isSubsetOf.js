@@ -1,7 +1,9 @@
 // 두 개의 배열(base, sample)을 입력받아 sample이 base의 부분집합인지 여부를 리턴해야 합니다.
 
-// base: number 타입을 요소로 갖는 임의의 배열 (base.length <= 100)
-// sample: number 타입을 요소로 갖는 임의의 배열 (sample.length <= 100)
+// 인자 1 : base
+// number 타입을 요소로 갖는 임의의 배열 (base.length <= 100 )
+// 인자 2 : sample
+// number 타입을 요소로 갖는 임의의 배열 (sample.length <= 100 )
 
 // boolean 타입을 리턴해야 합니다.
 // base, sample 내에 중복되는 요소는 없다고 가정합니다.
@@ -20,7 +22,7 @@ const isSubsetOf = function (base, sample) {
 };
 
 /* Advanced */
-// base, sample의 길이가 10,000 이상일 경우... 아마도 Time Complexity를 최소화 하는 문제인듯...
+// 시간 복잡도를 개선하여, 주석으로 처리된 테스트 케이스(base, sample의 길이가 100,000 이상)를 통과해보세요.
 const isSubsetOf = function (base, sample) {
   const sortedBase = base.sort((a, b) => {
     if (a < b) return -1;

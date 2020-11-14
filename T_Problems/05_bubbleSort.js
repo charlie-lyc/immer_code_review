@@ -42,17 +42,17 @@ const bubbleSort = function (arr) {
 // 최선의 경우 수행 시간을 단축할 수 있도록 코드를 수정하시기 바랍니다.
 // 위에서 설명된 알고리즘 1~3의 과정 중 어떤 요소도 위치가 바뀌지 않은 경우, 배열이 정렬된 상태라는 것을 알 수 있습니다.
 const bubbleSort = function (arr) {
-  for (let i = 0; i < arr.length - 1; i ++) {
+  for (let i = 0; i < arr.length; i ++) {
     let isSwapped = false;
-    for (let j = 0; j < arr.length - 1 - i; j ++) {
+    for (let j = 0; j < arr.length - i; j ++) {
       if (arr[j] > arr[j+1]) {
+        isSwapped = true;
         const temp = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = temp;
-        isSwapped = true;
       }
     }
-    if (isSwapped === false) break;
+    if (!isSwapped) break;
   }
   return arr;
 };

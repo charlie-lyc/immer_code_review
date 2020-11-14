@@ -24,22 +24,18 @@ const isSubsetOf = function (base, sample) {
 /* Advanced */
 // 시간 복잡도를 개선하여, 주석으로 처리된 테스트 케이스(base, sample의 길이가 100,000 이상)를 통과해보세요.
 const isSubsetOf = function (base, sample) {
-  const sortedBase = base.sort((a, b) => {
-    if (a < b) return -1;
-    return 1;
-  });
-  const sortedSample = sample.sort((a, b) => a - b);
-  const hasElement = (arr, idx, ele) => {
-    for (let i = idx; i < arr.length; i ++) {
-      if (ele === arr[i]) return i;
-      else if (ele < arr[i]) return -1;
-    }
-    return -1;
-  }
+  base.sort((a, b) => a - b);
+  sample.sort((a, b) => a - b);
   let fromIdx = 0;
-  for (let j = 0; j < sortedSample.length; j ++) {
-    fromIdx = hasElement(sortedBase, fromIdx, sortedSample[j]);
-    if (fromIdx === -1) return false;
+  for (let ele of sample) {
+    let hasElement = false;
+    for (let i = fromIdx; i < base.length; i ++) {
+      if (ele === base[i]) {
+        fromIdx = i + 1;
+        hasElement = true;
+      }
+    }
+    if (!hasElement) return false;
   }
   return true;
 };

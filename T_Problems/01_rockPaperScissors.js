@@ -26,8 +26,10 @@ const rockPaperScissors = function () {
   return result;
 };
 
-/* Advanced */
-// 가위바위보 게임의 수를 나타내는 양의 정수 rounds가 주어질 경우, 해당 rounds 동안 선택할 수 있는 모든 경우의 수를 리턴하도록 함수를 작성해야 합니다.
+/* Advanced:
+  가능한 모든 조합들(Combinations)의 수를 구하는 알고리즘을 알게 되었다. */
+// 가위바위보 게임의 수를 나타내는 양의 정수 rounds가 주어질 경우,
+// 해당 rounds 동안 선택할 수 있는 모든 경우의 수를 리턴하도록 함수를 작성해야 합니다.
 const rockPaperScissors = function (rounds=3) {
   const RPS = ['rock', 'paper', 'scissors'];
   const result = [];

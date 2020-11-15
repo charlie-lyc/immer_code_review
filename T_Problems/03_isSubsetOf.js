@@ -21,6 +21,7 @@ const isSubsetOf = function (base, sample) {
   return sample.every(ele => base.indexOf(ele) !== -1);
 };
 
+//////////////////////////////////////////////////
 /* Advanced */
 // 시간 복잡도를 개선하여, 주석으로 처리된 테스트 케이스(base, sample의 길이가 100,000 이상)를 통과해보세요.
 const isSubsetOf = function (base, sample) {

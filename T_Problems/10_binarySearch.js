@@ -13,36 +13,16 @@
 // target이 없는 경우, -1을 리턴해야 합니다.
 
 /* Time Complexity: O(log n) */
-// Reference
 const binarySearch = function (arr, target) {
   let leftIdx = 0;
   let rightIdx = arr.length - 1;
   while (leftIdx <= rightIdx) {
-    let middleIdx = Math.round((leftIdx + rightIdx) / 2);
+    const middleIdx = Math.round((leftIdx + rightIdx) / 2);
     if (arr[middleIdx] === target) return middleIdx;
-    else if (target < arr[middleIdx]) rightIdx = middleIdx - 1;
-    else if (target > arr[middleIdx]) leftIdx = middleIdx + 1;
+    else if (arr[middleIdx] > target) rightIdx = middleIdx - 1;
+    else if (arr[middleIdx] < target) leftIdx = middleIdx + 1;
   }
   return -1;
-};
-
-// My Solution
-const binarySearch = function (arr, target) {
-  let leftIdx = 0;
-  let rightIdx = arr.length - 1;
-  const findTarget = (halfIdx) => {
-    if ((rightIdx - leftIdx === 2) && target !== arr[halfIdx] ) return -1;
-    if (target === arr[halfIdx]) {
-      return halfIdx;
-    } else if (target > arr[halfIdx]) {
-      leftIdx = halfIdx;
-      return findTarget(Math.round((rightIdx + halfIdx) / 2));
-    } else if (target < arr[halfIdx]) {
-      rightIdx = halfIdx;
-      return findTarget(Math.round((leftIdx + halfIdx) / 2));
-    }
-  }
-  return findTarget(Math.round((arr.length - 1) / 2));
 };
 
 

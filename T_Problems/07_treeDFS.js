@@ -14,29 +14,29 @@
 // 주어진 Tree클래스의 메서드(addChild, isDescendant, removeChild)를 이용해야 합니다.
 // 깊이에 따른 필터링이 가능해야 합니다.
 
-
-/* Tree 구조의 재귀적 구현의 핵심: node -> node.children[i] */
-let dfs = function (node) {
-  const result = [];
-  const searchDFS = (node) => {
-    result.push(node.value);
-    node.children.forEach((child) => searchDFS(child));
-  }
-  searchDFS(node);
-  return result;
-};
-
-
 /* Reference: 이 구조도 이해하고 구현할 수 있어야 한다!!! */
 let dfs = function (node) {
   let result = [node.value];
-  node.children.forEach((child) => {
-    result = result.concat(dfs(child));
+  node.children.forEach((childNode) => {
+    result = result.concat(dfs(childNode));
   });
   return result;
 };
 
+/* My Solution : <Tree 구조의 재귀적 구현의 핵심> 'node' -> 'node.children[i]' */
+let dfs = function (node) {
+  const result = [];
+  const searchDFSGetValue = (treeNode) => {
+    result.push(treeNode.value);
+    treeNode.children.forEach((childNode) => {
+      searchDFSGetValue(childNode));
+    });
+  }
+  searchDFSGetValue(node);
+  return result;
+};
 
+/************************************************/
 // 이 아래 코드는 변경하지 않아도 됩니다. 자유롭게 참고하세요.
 let Node = function (value) {
   this.value = value;

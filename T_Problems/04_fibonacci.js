@@ -14,6 +14,7 @@ function fibonacci(n) {
   return fibonacci(n-2) + fibonacci(n-1);
 }
 
+////////////////////////////////////////////////////
 /* Advnaced */
 // 재귀함수의 형태를 유지한 채, 메모이제이션(memoization)을 적용하여 주석으로 처리된 테스트 케이스를 통과해보세요.
 let memo = [0, 1];

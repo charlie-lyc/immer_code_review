@@ -27,6 +27,6 @@ const binarySearch = function (arr, target) {
 
 
 /* Time Complexity: O(n) */
-// const binarySearch = function (arr, target) {
-//   return arr.indexOf(target);
-// };
+const binarySearch = function (arr, target) {
+  return arr.indexOf(target);
+};

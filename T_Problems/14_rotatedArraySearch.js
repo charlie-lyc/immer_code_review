@@ -16,7 +16,6 @@
 // Hint: 이진 탐색(binary search)을 약간 변형하여 해결합니다.
 
 /* Bare Minimum Requirements */
-
 const rotatedArraySearch = function (rotated, target) {
   return rotated.indexOf(target);
 };
@@ -27,28 +26,19 @@ const rotatedArraySearch = function (rotated, target) {
 // 단순히 처음부터 끝까지 찾아보는 방법(O(n)) 대신 다른 방법(O(log n))을 탐구해 보세요.
 // Time Complexity: O(log n)
 const rotatedArraySearch = function (rotated, target) {
-  const newRotated = rotated.slice();
-  const minNum = Math.min.apply(null, rotated);
-  let count = 0;
-  while (newRotated[0] !== minNum) {
-    const popped = newRotated.pop();
-    newRotated.unshift(popped);
-    count ++;
-  }
-  const result = binarySearch(newRotated, target);
-  if (result === -1) return result;
-  if (result - count < 0) return result - count + rotated.length;
-  return result - count;
-  // Helper Function
-  function binarySearch(arr, tarVal) {
-    let leftIdx = 0;
-    let rightIdx = arr.length - 1;
-    while (leftIdx <= rightIdx) {
-      const midIdx = Math.round((leftIdx + rightIdx) / 2);
-      if (tarVal === arr[midIdx]) return midIdx;
-      else if (tarVal > arr[midIdx]) leftIdx = midIdx + 1;
-      else if (tarVal < arr[midIdx]) rightIdx = midIdx - 1;
+  let leftIdx = 0
+  let rightIdx = rotated.length - 1;
+  while (leftIdx <= rightIdx) {
+    const midIdx = Math.round((leftIdx + rightIdx) / 2);
+    if (target === rotated[midIdx]) {
+      return midIdx;
+    } else if (rotated[leftIdx] < rotated[midIdx]) {
+      if (rotated[leftIdx] <= target && target < rotated[midIdx]) rightIdx = midIdx - 1;
+      else leftIdx = midIdx + 1;
+    } else {
+      if (rotated[midIdx] < target && target <= rotated[rightIdx]) leftIdx = midIdx + 1;
+      else rightIdx = midIdx - 1;
     }
-    return -1;
-  };
+  }
+  return -1;
 };

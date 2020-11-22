@@ -14,10 +14,10 @@
 let bfs = function (node) {
   const queue = [node];
   const result = [];
-  while (queue.length > 0) {
-    const head = queue.shift();
-    result.push(head.value);
-    head.children.forEach((child) => queue.push(child));
+  while (queue.length !== 0) {
+    const presentNode = queue.pop();
+    result.push(presentNode.value);
+    presentNode.children.forEach((child) => queue.unshift(child));
   }
   return result;
 };

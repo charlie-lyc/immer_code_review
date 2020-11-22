@@ -14,28 +14,26 @@
 
 
 const powerSet = function (str) {
-  // 중복되는 문자 제외
-  let notRpeatedCharStr = '';
+  let notRepeated = '';
   for (let char of str) {
-    if (notRpeatedCharStr.indexOf(char) === -1) notRpeatedCharStr += char;
+    if (notRepeated.indexOf(char) === -1) notRepeated += char;
   }
-  // 최소길이에서 최대길이까지 결합이 가능한 모든 경우의 문자열 찾기
-  const subsetStrs =[''];
-  const findSubsetStrs = (sourceStr, initailStr) => {
+
+  const allPermutations = [''];
+  const findPermutations = (sourceStr, initialStr) => {
     if (sourceStr.length === 0) return;
     for (let i = 0; i < sourceStr.length; i ++) {
-      subsetStrs.push(initailStr.concat(sourceStr[i]));
-      findSubsetStrs(sourceStr.slice(0, i).concat(sourceStr.slice(i+1)) , initailStr.concat(sourceStr[i]));
+      allPermutations.push(initialStr.concat(sourceStr[i]));
+      findPermutations(sourceStr.slice(0, i).concat(sourceStr.slice(i + 1)), initialStr.concat(sourceStr[i]))
     }
   }
-  findSubsetStrs(notRpeatedCharStr, '');
-  // 각 문자열의 문자들을 알파벳 순서로 정렬
-  const sortedSubsetStrs = subsetStrs.map((str) => str.split('').sort().join(''));
-  // 중복되는 문자열 제외
-  const filteredSubsets = sortedSubsetStrs.reduce((acc, str) => {
+  findPermutations(notRepeated, '');
+
+  const sortedStrArr = allPermutations.map((eachStr) => eachStr.split('').sort().join(''));
+  const notDuplicated = sortedStrArr.reduce((acc, str) => {
     if (acc.indexOf(str) === -1) acc.push(str);
     return acc;
   }, []);
-  // 문자열들의 집합을 사전식 순서(lexical order)로 정렬
-  return filteredSubsets.sort();
+
+  return notDuplicated.sort();
 };

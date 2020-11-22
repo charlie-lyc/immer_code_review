@@ -26,6 +26,7 @@ const insertionSort = function (arr) {
   return arr;
 };
 
+
 ////////////////////////////////////////////////////////////////////////////////
 /* Advanced */
 // insertionSort 함수가 두 번째 인자로 callback 함수를 받아서,

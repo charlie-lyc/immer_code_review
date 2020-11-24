@@ -26,6 +26,7 @@ const rotatedArraySearch = function (rotated, target) {
 // 단순히 처음부터 끝까지 찾아보는 방법(O(n)) 대신 다른 방법(O(log n))을 탐구해 보세요.
 // Time Complexity: O(log n)
 const rotatedArraySearch = function (rotated, target) {
+  // debugger;
   let leftIdx = 0
   let rightIdx = rotated.length - 1;
   while (leftIdx <= rightIdx) {
@@ -42,3 +43,7 @@ const rotatedArraySearch = function (rotated, target) {
   }
   return -1;
 };
+
+// "else if (rotated[midIdx] < rotated[rightIdx])" 로 작성될 경우에는 왜 안되는 것인가?
+// 결론적으로, 세가지 경우의 조건만으로는 while 루프에서 영원히 빠져 나오지 못하는 경우가 생긴다.
+// "debugger"를 이용해 콘솔에서 실행해 보면 확인할 수 있다.

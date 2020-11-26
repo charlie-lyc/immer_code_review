@@ -13,29 +13,7 @@
 // arr.sort 사용은 금지됩니다.
 // 입력으로 주어진 배열은 중첩되지 않은 1차원 배열입니다.
 
-/* Bare Minumum Requirements */
-
-
-const quickSort = function (arr) {
-
-  for (let pivotIdx = 0; pivotIdx < arr.length; pivotIdx ++) {
-    let storeIdx = pivotIdx + 1;
-    for (let i = pivotIdx + 1; storeIdx < arr.length; storeIdx ++) {
-      if (arr[pivotIdx] > arr[i]) {
-        const temp = arr[i];
-        arr[i] = arr[storeIdx];
-        arr[storeIdx] = temp;
-        storeidx ++;
-      }
-    }
-    const temp = arr[pivotIdx];
-    arr[pivotIdx] = arr[storeIdx-1];
-    arr[storeIdx-1] = temp;
-  }
-  return arr;
-
-};
-
+/* Pseudo Code form Visual Algo */
 // for each (unsorted) partition
 // set first element as pivot
 //   storeIndex = pivotIndex + 1
@@ -44,8 +22,36 @@ const quickSort = function (arr) {
 //       swap(i, storeIndex); storeIndex++
 //   swap(pivot, storeIndex - 1)
 
+/* Bare Minumum Requirements */
+const quickSort = function (arr) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[0];
+  const left = [];
+  const right = [];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] <= pivot) left.push(arr[i]);
+    else right.push(arr[i]);
+  }
+  const lSorted = quickSort(left);
+  const rSorted = quickSort(right);
+  return [...lSorted, pivot, ...rSorted];
+};
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /* Advanced */
 // quickSort 함수가 두 번째 인자로 callback 함수를 받아서,
 // 그 함수의 리턴값을 기준으로 요소들을 정렬합니다.
+const quickSort = function (arr, cb = (ele) => ele) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[0];
+  const left = [];
+  const right = [];
+  for (let i = 1; i < arr.length; i++) {
+    if (cb(arr[i]) <= cb(pivot)) left.push(arr[i]);
+    else right.push(arr[i]);
+  }
+  const lSorted = quickSort(left);
+  const rSorted = quickSort(right);
+  return [...lSorted, pivot, ...rSorted];
+};

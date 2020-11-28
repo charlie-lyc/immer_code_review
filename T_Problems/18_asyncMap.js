@@ -24,6 +24,7 @@ const asyncMap = function (tasks, final) {
   tasks.forEach((task, idx) => {
     task((data) => {
       // 어떤 task가 먼저 끝날지 모르기 때문에 result.push가 아니라 인덱스를 특정해야 한다.
+      // map()을 이용하지 않는 이유도 새로운 결과 배열을 만드는 데 push()를 이용하기 때문이다.
       // push는 동기적 처리?, bracket notation은 비동기적 처리?
       results[idx] = data;
       count ++;

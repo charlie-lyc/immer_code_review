@@ -44,6 +44,10 @@ const rotatedArraySearch = function (rotated, target) {
   return -1;
 };
 
-// "else if (rotated[midIdx] < rotated[rightIdx])" 로 작성될 경우에는 왜 안되는 것인가?
-// 결론적으로, 세가지 경우의 조건만으로는 while 루프에서 영원히 빠져 나오지 못하는 경우가 생긴다.
-// "debugger"를 이용해 콘솔에서 실행해 보면 확인할 수 있다.
+// "else if (rotated[midIdx] < rotated[rightIdx])" 로 작성될 경우에는 왜 안되는 것인가???
+// 예를 들어 설명하자면, 위의 logic이 진행되어 left === 3 && right === 3 인 상태가 되면
+// middle 또한 3이 되고 영원히 while 루프에서 빠져 나오지 못하게 되는 경우가 발생된다.
+// 즉, target이 대상 배열에 없는 경우를 찾기 위해서는 어떤 경우든 left는 +, right는 - 방향으로 진행시켜
+// while 루프에서 빠져 나올 수 있는 조건 left > right인 상태를 발생시켜야 하는데
+// 위와 같은 두개의 else if 조건만으로는 그럴 수 가 없다.
+// 이 같은 사실은 "debugger"를 이용해 콘솔에서 실행해 보면 확인할 수 있다.

@@ -14,8 +14,9 @@
 // 괄호는 먼저 열리고((), 열린만큼만 닫혀야()) 합니다.
 // 빈 문자열을 입력받은 경우, true를 리턴해야 합니다.
 
+/******************************************************************************/
+/******************************** Reference ***********************************/
 /* Bare Minimum Requirements */
-// Reference
 const balancedBrackets = function (str) {
   const opener = '(';
   const closer = ')';
@@ -31,8 +32,48 @@ const balancedBrackets = function (str) {
   return stack.length === 0;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+/* Advanced */
+// 모든 종류의 괄호((, ), {, }, [, ])가 포함된 문자열을 입력빋아 모든 괄호의 짝이 맞는지 여부를 리턴해 보세요.
+const balancedBrackets = function (str) {
+  const openers = {
+    '(': ')',
+    '{': '}',
+    '[': ']'
+  };
+  const closers = ')}]';
+  const stack = [];
+  for (let char of str) {
+    if (char in openers) {
+      stack.push(char);
+    } else if (closers.indexOf(char) !== -1) {
+      const recent = stack.pop();
+      if (char !== openers[recent]) return false;
+    }
+  }
+  return stack.length === 0;
+};
 
-// My Solution
+// Another Reference
+const balancedBrackets = function (str) {
+  const openers = '({[';
+  const closers = ')}]';
+  const stack = [];
+  for (let char of str) {
+    if (openers.indexOf(char) !== -1) {
+      stack.push(char);
+    } else if (closers.indexOf(char) !== -1) {
+      const recent = stack.pop();
+      if (!recent || (recent === '(' && char !== ')') || (recent === '{' && char !== '}') || (recent === '[' && char !== ']')) return false;
+    }
+  }
+  return stack.length === 0;
+};
+
+
+/******************************************************************************/
+/******************************* My Solution **********************************/
+/* Bare Minimum Requirements */
 // const balancedBrackets = function (str) {
 //   if (str.length === 0) return true;
 //   let rBracket = 0;
@@ -51,28 +92,6 @@ const balancedBrackets = function (str) {
 ////////////////////////////////////////////////////////////////////////////////
 /* Advanced */
 // 모든 종류의 괄호((, ), {, }, [, ])가 포함된 문자열을 입력빋아 모든 괄호의 짝이 맞는지 여부를 리턴해 보세요.
-// Reference
-const balancedBrackets = function (str) {
-  const openers = {
-    '(': ')',
-    '{': '}',
-    '[': ']'
-  }
-  const closers = ')}]';
-  const stack = [];
-  for (let char of str) {
-    if (char in openers) {
-      stack.push(char);
-    } else if (closers.indexOf(char) !== -1) {
-      const pair = openers[stack.pop()];
-      if (pair !== char) return false;
-    }
-  }
-  return stack.length === 0;
-};
-
-
-// My Solution
 // const balancedBrackets = function (str) {
 //   if (str.length === 0) return true;
 //   let temp = [];

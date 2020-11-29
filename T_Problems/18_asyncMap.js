@@ -19,17 +19,20 @@
 
 // Reference
 const asyncMap = function (tasks, final) {
-  const results = [];
-  let count = 0;
+  const result = [];
+  let counter = 0;
   tasks.forEach((task, idx) => {
     task((data) => {
       // 어떤 task가 먼저 끝날지 모르기 때문에 result.push가 아니라 인덱스를 특정해야 한다.
       // map()을 이용하지 않는 이유도 새로운 결과 배열을 만드는 데 push()를 이용하기 때문이다.
-      // push는 동기적 처리?, bracket notation은 비동기적 처리?
-      results[idx] = data;
-      count ++;
-      // 완료된 비동기 작업이 tasks의 개수와 같은 경우 즉, 모든 비동기 함수의 실행이 종료된 경우
-      if (count === tasks.length) final(results);
+      // 그렇다면 push는 동기적 처리?, bracket notation은 비동기적 처리?
+      // result.push(data); // XXX
+      result[idx] = data;
+      // 앞선 실행이 완료되었음을 가늠할 수 있는 기준으로 results.length === tasks.length 는 적절하지 않다.
+      // 왜냐 하면 비동기 처리이므로... 따라서 다른 간단한 실행문을 끼워 넣는다.
+      counter ++;
+      // 마찬가지로 어떤 task가 마지막으로 끝날지 모르기 때문에 모든 task 실행 마지막에 끼워 넣는다.
+      if (counter === tasks.length) final(result);
     });
   });
 };

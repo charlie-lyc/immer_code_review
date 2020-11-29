@@ -28,13 +28,11 @@ const quickSort = function (arr) {
   const pivot = arr[0];
   const left = [];
   const right = [];
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] <= pivot) left.push(arr[i]);
+  for (let i = 1; i < arr.length; i ++) {
+    if (arr[i] < pivot) left.push(arr[i]);
     else right.push(arr[i]);
   }
-  const lSorted = quickSort(left);
-  const rSorted = quickSort(right);
-  return [...lSorted, pivot, ...rSorted];
+  return [ ...quickSort(left), pivot, ...quickSort(right)];
 };
 
 
@@ -42,16 +40,15 @@ const quickSort = function (arr) {
 /* Advanced */
 // quickSort 함수가 두 번째 인자로 callback 함수를 받아서,
 // 그 함수의 리턴값을 기준으로 요소들을 정렬합니다.
-const quickSort = function (arr, cb = (ele) => ele) {
+const quickSort = function (arr, cb = ele => ele) {
   if (arr.length <= 1) return arr;
   const pivot = arr[0];
   const left = [];
   const right = [];
-  for (let i = 1; i < arr.length; i++) {
-    if (cb(arr[i]) <= cb(pivot)) left.push(arr[i]);
+  for (let i = 1; i < arr.length; i ++) {
+    if (cb(arr[i]) < cb(pivot)) left.push(arr[i]);
     else right.push(arr[i]);
   }
-  const lSorted = quickSort(left);
-  const rSorted = quickSort(right);
-  return [...lSorted, pivot, ...rSorted];
+  return [ ...quickSort(left, cb), pivot, ...quickSort(right, cb)];
+  // return [ ...quickSort(left), pivot, ...quickSort(right)];
 };

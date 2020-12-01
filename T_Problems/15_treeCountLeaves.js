@@ -1,12 +1,12 @@
 // 임의의 tree를 구성하는 루트 노드(root node) 입력받아 리프 노드(leaf node)의 개수를 리턴해야 합니다.
-
+//
 // 인자 1 : root
 // 'value', 'children' 속성을 갖는 객체 (Node)
 // 'node.value'는 number 타입
 // 'node.children'은 Node를 요소로 갖는 배열
-
+//
 // number 타입을 리턴해야 합니다.
-
+//
 // 생성자 함수(Node)와 메소드(addChild)는 변경하지 않아야 합니다.
 
 /* My Solution */

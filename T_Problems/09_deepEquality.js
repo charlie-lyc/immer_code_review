@@ -1,12 +1,12 @@
 // 두 개의 객체를 입력받아 이 두 객체가 동일한 데이터를 담고 있는지 여부를 리턴해야 합니다.
-
+//
 // 인자 1 : obj1
 // 임의의 속성을 갖는 객체
 // 인자 2 : obj2
 // 임의의 속성을 갖는 객체
-
+//
 // boolean 타입을 리턴해야 합니다.
-
+// 
 // 입력으로 주어지는 객체는 object literal 또는 object initializer만을 의미합니다.
 // object literal: 중괄호({, })와 콤마(,)를 사용하여 정의된 key-value store (MDN 참고)
 // 객체의 속성은 object literal, number, string, boolean, undefined, null 중 하나입니다.

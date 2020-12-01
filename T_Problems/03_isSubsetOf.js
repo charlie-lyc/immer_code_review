@@ -1,10 +1,10 @@
 // 두 개의 배열(base, sample)을 입력받아 sample이 base의 부분집합인지 여부를 리턴해야 합니다.
-
+//
 // 인자 1 : base
 // number 타입을 요소로 갖는 임의의 배열 (base.length <= 100 )
 // 인자 2 : sample
 // number 타입을 요소로 갖는 임의의 배열 (sample.length <= 100 )
-
+// 
 // boolean 타입을 리턴해야 합니다.
 // base, sample 내에 중복되는 요소는 없다고 가정합니다.
 
